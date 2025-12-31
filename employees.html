@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employees - DumnestHR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+  <a href="index.html">Dashboard</a>
+  <a href="employees.html">Employees</a>
+  <a href="leave.html">Leave</a>
+  <a href="attendance.html">Attendance</a>
+  <a href="payroll.html">Payroll</a>
+  <a href="performance.html">Performance</a>
+  <a href="recruitment.html">Recruitment</a>
+  <a href="login.html">Employee Login</a>
+</nav>
+    <div class="container">
+      <h1><i class="fas fa-users"></i> Employees by Department</h1>
+    </div>
+  </header>
+
+  <section class="employees container">
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search by name..." />
+      <button class="btn primary" onclick="openModal()">+ Add Employee</button>
+    </div>
+
+    <div id="departments-list">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2 id="modal-title">Add New Employee</h2>
+      <form id="employee-form">
+        <input type="hidden" id="edit-id" />
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="tel" id="phone" placeholder="Phone" />
+        <select id="department" required>
+          <option value="">Select Department</option>
+          <option>IT</option>
+          <option>HR</option>
+          <option>Finance</option>
+          <option>Marketing</option>
+          <option>Operations</option>
+          <option>Maintenance</option>
+          <option>Foreman</option>
+          <option>HER Mechanic</option>
+          <option>Electrician</option>
+        </select>
+        <input type="number" id="salary" placeholder="Monthly Salary (K)" required />
+        <input type="date" id="join-date" required />
+        <button type="submit" class="btn primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

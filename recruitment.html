@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recruitment - DumnestHR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Recruitment & Applicants</h1>
+      <a href="index.html" class="btn secondary small">← Dashboard</a>
+    </div>
+  </header>
+
+  <section class="container">
+    <button class="btn primary" onclick="openCandidateModal()">+ Add New Applicant</button>
+
+    <table style="margin-top:30px;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Applied Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="candidate-list">
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Modal for candidate -->
+  <div id="candidate-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCandidateModal()">×</span>
+      <h2 id="candidate-title">Add Applicant</h2>
+      <form id="candidate-form">
+        <input type="hidden" id="candidate-id" />
+        <input type="text" id="candidate-name" placeholder="Full Name" required />
+        <input type="text" id="candidate-position" placeholder="Position Applied For" required />
+        <input type="date" id="candidate-applied" required />
+        <select id="candidate-status" required>
+          <option value="Applied">Applied</option>
+          <option value="Interview">Interview Scheduled</option>
+          <option value="Offer">Offer Made</option>
+          <option value="Hired">Hired</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+        <button type="submit" class="btn primary">Save Applicant</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Performance Reviews - DumnestHR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Performance Reviews</h1>
+      <a href="index.html" class="btn secondary small">← Dashboard</a>
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="controls">
+      <select id="review-emp">
+        <!-- Filled by JS -->
+      </select>
+      <button class="btn primary" onclick="openReviewModal()">Add/Edit Review</button>
+    </div>
+
+    <div id="review-display" style="margin-top:40px; background:white; padding:30px; border-radius:12px;">
+      <p>Select an employee to view or add review</p>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="review-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeReviewModal()">×</span>
+      <h2>Performance Review</h2>
+      <form id="review-form">
+        <input type="hidden" id="review-emp-id" />
+        <p><strong>Employee:</strong> <span id="review-emp-name"></span></p>
+        <label>Rating (1-5):</label>
+        <select id="rating" required>
+          <option value="">Select</option>
+          <option value="5">5 - Excellent</option>
+          <option value="4">4 - Good</option>
+          <option value="3">3 - Average</option>
+          <option value="2">2 - Needs Improvement</option>
+          <option value="1">1 - Poor</option>
+        </select>
+        <label>Comments:</label>
+        <textarea id="comments" rows="6" placeholder="Strengths, areas for improvement, goals..." required></textarea>
+        <button type="submit" class="btn primary">Save Review</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

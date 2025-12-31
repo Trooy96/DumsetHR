@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DumnestHR - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <header class="header">
+  
+  <div class="container nav-container">
+    <h1><i class="fas fa-users-cog"></i> DumnestHR</h1>
+    <nav class="nav">
+      <a href="index.html">Dashboard</a>
+      <a href="employees.html">Employees</a>
+      <a href="leave.html">Leave</a>
+      <a href="attendance.html">Attendance</a>
+      <a href="performance.html">Performance</a>
+      <a href="payroll.html">Payroll</a>
+      <a href="recruitment.html">Recruitment</a>
+      <a href="login.html" class="btn secondary small">Login</a>
+    </nav>
+  </div>
+  </header>
+
+  <section class="dashboard container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-users"></i>
+        <h3 id="total-employees">0</h3>
+        <p>Total Employees</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-building"></i>
+        <h3 id="total-depts">0</h3>
+        <p>Departments</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3 id="attendance-rate">90%</h3>
+        <p>Monthly Attendance</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-money-bill-wave"></i>
+        <h3 id="net-payroll">K0</h3>
+        <p>Net Payroll (after tax)</p>
+      </div>
+    </div>
+
+    <!-- Attendance Calendar -->
+    <div class="attendance-calendar">
+      <h2>December 2025 Attendance</h2>
+      <div id="calendar-grid"></div>
+      <div class="legend">
+        <span><i class="fas fa-square" style="color:#27ae60;"></i> Present</span>
+        <span><i class="fas fa-square" style="color:#e74c3c;"></i> Absent</span>
+        <span><i class="fas fa-square" style="color:#f39c12;"></i> Late</span>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <a href="employees.html" class="btn primary">Manage Employees</a>
+      <button class="btn secondary" onclick="generateReport()">Generate Report</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 DumnestHR • Built by Nsama Kalyoti</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function updateDashboard() {
+      const employees = JSON.parse(localStorage.getItem('employees')) || [];
+      document.getElementById('total-employees').textContent = employees.length;
+      const depts = new Set(employees.map(e => e.department));
+      document.getElementById('total-depts').textContent = depts.size || 0;
+      const gross = employees.reduce((sum, e) => sum + parseFloat(e.salary || 0), 0);
+      document.getElementById('net-payroll').textContent = 'K' + Math.round(gross * 0.8).toLocaleString();
+    }
+
+    // Simple calendar
+    function renderCalendar() {
+      const grid = document.getElementById('calendar-grid');
+      grid.innerHTML = '';
+      for (let i = 1; i <= 31; i++) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day';
+        day.textContent = i;
+        const status = Math.random();
+        if (status > 0.9) day.classList.add('absent');
+        else if (status > 0.8) day.classList.add('late');
+        else day.classList.add('present');
+        grid.appendChild(day);
+      }
+    }
+
+    updateDashboard();
+    renderCalendar();
+  </script>
+</body>
+</html>

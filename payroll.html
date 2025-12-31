@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payroll - NsamaHR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Generate Payslip</h1>
+      <a href="index.html" class="btn secondary small">← Dashboard</a>
+    </div>
+  </header>
+
+  <section class="container" style="text-align:center; padding:60px;">
+    <select id="pay-emp" style="padding:15px; font-size:1rem; margin:20px;"></select>
+    <br>
+    <button class="btn primary" onclick="generatePayslip()">Download PDF Payslip</button>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

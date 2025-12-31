@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portal - DumnestHR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Welcome back, <span id="ss-name">Employee</span>!</h1>
+      <a href="#" onclick="logout()" class="btn secondary small">Logout</a>
+    </div>
+  </header>
+
+  <section class="container self-service">
+    <div class="ss-grid">
+      <div class="ss-card">
+        <i class="fas fa-id-badge"></i>
+        <h3>My Details</h3>
+        <p>Department: <strong id="ss-dept"></strong></p>
+        <p>Salary: K<strong id="ss-salary"></strong></p>
+        <p>Joined: <strong id="ss-join"></strong></p>
+      </div>
+
+      <div class="ss-card">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Request Leave</h3>
+        <button class="btn primary" onclick="requestLeave()">Submit Request</button>
+      </div>
+
+      <div class="ss-card">
+        <i class="fas fa-clock"></i>
+        <h3>Attendance</h3>
+        <button class="btn primary" onclick="clockInOut()">Clock In / Out Today</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
